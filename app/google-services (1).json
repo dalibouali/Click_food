@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "624367629919",
+    "project_id": "click-food-453a2",
+    "storage_bucket": "click-food-453a2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:624367629919:android:73e0b38904a8df86304dea",
+        "android_client_info": {
+          "package_name": "my.clickfood.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "624367629919-m8t768b0a6102jaeqkhjo53h1g0a7vvl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlYsXUqVKHoqHYxWbUuEznrlNAW1SXsNs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "624367629919-m8t768b0a6102jaeqkhjo53h1g0a7vvl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

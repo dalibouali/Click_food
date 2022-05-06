@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Click_Food</string>
+    <string-array name="State">
+        <item>Tunis</item>
+        <item>Ben Arous</item>
+        <item>Manouba</item>
+        <item>Ariana</item>
+    </string-array>
+</resources>
