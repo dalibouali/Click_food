@@ -4,11 +4,43 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/drawable-v24/background_shape.xml" value="0.3828125" />
-        <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/layout/activity_choose_one.xml" value="0.22010869565217392" />
+        <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/drawable-v24/btnred.xml" value="0.36041666666666666" />
+        <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/drawable/camerashapebtn.xml" value="0.27395833333333336" />
+        <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/drawable/ic_baseline_assignment_24.xml" value="0.3828125" />
+        <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/drawable/ic_baseline_camera_alt_24.xml" value="0.15925925925925927" />
+        <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.3828125" />
+        <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/drawable/ic_baseline_restaurant_24.xml" value="0.3828125" />
+        <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/drawable/ic_baseline_restaurant_menu_24.xml" value="0.3828125" />
+        <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/layout/activity_chef_bottom_navigation.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/layout/activity_chef_post_dish.xml" value="0.4" />
+        <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/layout/activity_choose_one.xml" value="0.4" />
+        <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/layout/activity_customer.xml" value="0.2552083333333333" />
+        <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/layout/activity_customer_bottom_navigation.xml" value="0.31979166666666664" />
+        <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/layout/activity_delivery_bottom_navigation.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/layout/activity_login.xml" value="0.35104166666666664" />
         <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/layout/activity_main.xml" value="0.35260416666666666" />
         <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/layout/activity_main_menu.xml" value="0.264" />
+        <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/layout/activity_order_dish.xml" value="0.20572916666666666" />
         <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/layout/activity_registration.xml" value="0.264" />
+        <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/layout/chef_home.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/layout/chef_orders.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/layout/chef_pendingorders.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/layout/chef_profile.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/layout/customer_home.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/layout/customer_menudish.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/layout/fragment_customer_cart.xml" value="0.4" />
+        <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/layout/fragment_customer_order.xml" value="0.1" />
+        <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/layout/fragment_customer_track.xml" value="0.2" />
+        <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/layout/fragment_customerhome.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/layout/fragment_customerprofile.xml" value="0.264" />
+        <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/layout/fragment_deliverypendingorders.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/layout/fragment_deliveryshipsorders.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/menu/bottm_navigation.xml" value="0.2552083333333333" />
+        <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/menu/chef_bottm_navigation.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/menu/customer_bottom_navigation.xml" value="0.31979166666666664" />
+        <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/menu/delivery_bottom_navigation.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/menu/logout.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/menu/search.xml" value="0.36666666666666664" />
       </map>
     </option>
   </component>

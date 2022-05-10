@@ -62,7 +62,7 @@ public class Registration extends AppCompatActivity {
     String confirmpass;
     String mobileno;
     Intent i;
-    String role ="" ;
+    String role  ;
 
     ProgressDialog mDialog;
     @Override
@@ -88,6 +88,8 @@ public class Registration extends AppCompatActivity {
             Mobileno = (TextInputLayout) findViewById(R.id.Mobileno);
 
             Email = (Button) findViewById(R.id.emaill);
+            i=getIntent();
+            role=i.getStringExtra("Role");
 
 
 
@@ -180,7 +182,7 @@ public class Registration extends AppCompatActivity {
                 }
             });
 
-            databaseReference = FirebaseDatabase.getInstance().getReference("Customer");
+            databaseReference = FirebaseDatabase.getInstance().getReference(role);
             FAuth = FirebaseAuth.getInstance();
 
             Signin.setOnClickListener(new View.OnClickListener() {
@@ -220,7 +222,7 @@ public class Registration extends AppCompatActivity {
                                             hashMappp.put("LocalAddress", Localaddress);
                                             hashMappp.put("State", statee);
                                             hashMappp.put("Suburban", suburban);
-                                            FirebaseDatabase.getInstance().getReference("Customer")
+                                            FirebaseDatabase.getInstance().getReference(role)
                                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                                     .setValue(hashMappp).addOnCompleteListener(new OnCompleteListener<Void>() {
 

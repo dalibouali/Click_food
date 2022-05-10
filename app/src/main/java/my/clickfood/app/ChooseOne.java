@@ -52,7 +52,7 @@ public class ChooseOne extends AppCompatActivity {
         Chef.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (type.equals("Email")) {
+                if (type.equals("SignIn")) {
                     Intent loginemail = new Intent(ChooseOne.this, Login.class);
                     loginemail.putExtra("Role","Chef");
                     startActivity(loginemail);
@@ -72,7 +72,7 @@ public class ChooseOne extends AppCompatActivity {
         Customer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (type.equals("Email")) {
+                if (type.equals("SignIn")) {
                     Intent loginemailcust = new Intent(ChooseOne.this, Login.class);
                     loginemailcust.putExtra("Role","Customer");
                     startActivity(loginemailcust);
@@ -96,7 +96,7 @@ public class ChooseOne extends AppCompatActivity {
                     startActivity(Registerdelivery);
                 }
 
-                if (type.equals("Email")) {
+                if (type.equals("SignIn")) {
                     Intent loginemail = new Intent(ChooseOne.this, Login.class);
                     loginemail.putExtra("Role","Delevery_man");
                     startActivity(loginemail);

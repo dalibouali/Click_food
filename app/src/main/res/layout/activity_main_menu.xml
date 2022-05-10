@@ -25,9 +25,9 @@
 
     <LinearLayout
         android:id="@+id/linearlayout"
-        android:layout_width="256dp"
-        android:layout_height="317dp"
-        android:background="@drawable/background_shape"
+        android:layout_width="280dp"
+        android:layout_height="384dp"
+
         android:orientation="vertical"
         app:circularflow_defaultRadius="11dp"
         app:circularflow_radiusInDP="11dp"
@@ -52,13 +52,13 @@
             android:padding="20dp"
             android:text="eat homemade anywhere"
             android:textAlignment="center"
-            android:textColor="#070707"
-            android:textSize="28sp" />
+            android:textColor="#FFFF"
+            android:textSize="34sp" />
 
         <Button
             android:id="@+id/SignwithEmail"
-            android:layout_width="207dp"
-            android:layout_height="wrap_content"
+            android:layout_width="220dp"
+            android:layout_height="69dp"
             android:layout_gravity="center"
             android:background="@drawable/btnred"
 
@@ -104,8 +104,8 @@
 
         <Button
             android:id="@+id/Signup"
-            android:layout_width="207dp"
-            android:layout_height="60dp"
+            android:layout_width="214dp"
+            android:layout_height="83dp"
             android:layout_gravity="center"
             android:layout_marginTop="25dp"
 

@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 public class MainMenu extends AppCompatActivity {
-    Button signinemail,signup;
+    Button signin,signup;
     ImageView bgimage;
 
     @Override
@@ -61,11 +61,11 @@ public class MainMenu extends AppCompatActivity {
 
         // End Animation
 
-        signinemail = (Button) findViewById(R.id.SignwithEmail);
+        signin = (Button) findViewById(R.id.SignwithEmail);
 
         signup = (Button) findViewById(R.id.Signup);
 //if Sign in with Email clicked
-        signinemail.setOnClickListener(new View.OnClickListener() {
+        signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
