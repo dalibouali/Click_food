@@ -42,7 +42,7 @@ public class CustomerHomeFragment extends Fragment implements SwipeRefreshLayout
     String State, City, Sub;
     DatabaseReference dataaa, databaseReference;
     SwipeRefreshLayout swipeRefreshLayout;
-    SearchView searchView;
+
 
 
     @Nullable
@@ -88,18 +88,24 @@ public class CustomerHomeFragment extends Fragment implements SwipeRefreshLayout
 
     @Override
     public void onRefresh() {
+        customermenu();
+
 
     }
 
 
     private void customermenu() {
-
+        //make the refresh option possible when scrolling down the screen
         swipeRefreshLayout.setRefreshing(true);
-        databaseReference = FirebaseDatabase.getInstance().getReference("FoodSupplyDetails").child(State).child(City).child(Sub);
+        databaseReference = FirebaseDatabase.getInstance().getReference("FoodDetails").child(State).child(City).child(Sub);
+        //ici on a ajouter un listener pour qui soit appeler chaque fois que le data et modifier
         databaseReference.addValueEventListener(new ValueEventListener() {
+            //si une modification est servenu dans la database
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                //vider la collection
                 updateDishModelList.clear();
+                //mettre a jour la collection a partir de la base de donnée
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     for (DataSnapshot snapshot1 : snapshot.getChildren()) {
                         UpdateDishModel updateDishModel = snapshot1.getValue(UpdateDishModel.class);
@@ -111,7 +117,7 @@ public class CustomerHomeFragment extends Fragment implements SwipeRefreshLayout
                 swipeRefreshLayout.setRefreshing(false);
 
             }
-
+            //si une erreur de serveur est servenu
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
@@ -125,12 +131,26 @@ public class CustomerHomeFragment extends Fragment implements SwipeRefreshLayout
 
 
 
+
+
+    //add logout function to option menu
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.logout,menu);
 
 
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int idd = item.getItemId();
+        if (idd == R.id.LogOut) {
+            Logout();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    //logout function
     private void Logout(){
         FirebaseAuth.getInstance().signOut();
         Intent intent=new Intent(getActivity(), MainMenu.class);

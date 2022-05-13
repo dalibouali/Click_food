@@ -1,5 +1,5 @@
 package my.clickfood.app.Chef;
-
+//DTO CLASS
 public class UpdateDishModel {
 
     String Dishes,RandomUID,Description,Quantity,Price,ImageURL,ChefId;

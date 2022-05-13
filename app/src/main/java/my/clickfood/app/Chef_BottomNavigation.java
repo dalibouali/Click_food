@@ -22,7 +22,11 @@ public class Chef_BottomNavigation extends AppCompatActivity implements BottomNa
         setContentView(R.layout.activity_chef_bottom_navigation);
         BottomNavigationView navigationView=findViewById(R.id.chef_bottom_navigation);
         navigationView.setOnNavigationItemSelectedListener(this);
-    }
+
+
+            loadcheffragment(new HomeFragment());
+        }
+
     //here on any item of the menu selected the fragment will be changed
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -38,12 +42,13 @@ public class Chef_BottomNavigation extends AppCompatActivity implements BottomNa
                 fragment = new PendingOrderFragment();
                 break;
             case R.id.Orders:
-                fragment = new HomeFragment();
+                fragment = new OrderFragment();
                 break;
         }
         return loadcheffragment( fragment);
     }
 
+    //here we load the fragment (fragment is  like an activity that is charged inside another activity)
     private boolean loadcheffragment(Fragment fragment) {
         if(fragment!=null){
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).commit();

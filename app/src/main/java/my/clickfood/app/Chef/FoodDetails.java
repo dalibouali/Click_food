@@ -1,5 +1,5 @@
 package my.clickfood.app.Chef;
-
+//DTO CLASS
 public class FoodDetails {
     public String Dishes ,Quantity,Price,Description,ImageURL,RandomUID,Chefid;
 

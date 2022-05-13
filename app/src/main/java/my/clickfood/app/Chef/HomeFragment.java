@@ -16,7 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -28,123 +28,119 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import my.clickfood.app.Customer;
-import my.clickfood.app.CustomerPack.CustomerHomeAdapter;
+
 import my.clickfood.app.MainMenu;
 import my.clickfood.app.R;
 
-public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener  {
+public class HomeFragment extends Fragment  {
 
     RecyclerView recyclerView;
     private List<UpdateDishModel> updateDishModelList;
-    private CustomerHomeAdapter adapter;
-    String State, City, Sub;
-    DatabaseReference dataaa, databaseReference;
-    SwipeRefreshLayout swipeRefreshLayout;
+    private ChefHomeAdapter adapter;
+    DatabaseReference dataaa;
+    private String State, City, Sub;
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v=inflater.inflate(R.layout.chef_home,null);
-        getActivity().setTitle("Home");
+        //this fragment is related to xml file chef_home
+        View v = inflater.inflate(R.layout.chef_home, null);
+        getActivity().setTitle("Click Food");
+        //add menu option
         setHasOptionsMenu(true);
-
+        //initialise the recycle view
         recyclerView = v.findViewById(R.id.recycle_menu);
         recyclerView.setHasFixedSize(true);
-        Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.move);
-        recyclerView.startAnimation(animation);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        //this is the collection that will passed next to the adapter
         updateDishModelList = new ArrayList<>();
-        swipeRefreshLayout = (SwipeRefreshLayout) v.findViewById(R.id.swipelayout);
-        swipeRefreshLayout.setOnRefreshListener((SwipeRefreshLayout.OnRefreshListener) this);
-        swipeRefreshLayout.setColorSchemeResources(R.color.colorPrimaryDark, R.color.green);
+        //get current userid
+        String userid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        //dataaa contaions all info about the current user
+        dataaa = FirebaseDatabase.getInstance().getReference("Chef").child(userid);
 
-        swipeRefreshLayout.post(new Runnable() {
-            @Override
-            public void run() {
-                swipeRefreshLayout.setRefreshing(true);
-                String userid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                dataaa = FirebaseDatabase.getInstance().getReference("Customer").child(userid);
-                dataaa.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        Customer cust = dataSnapshot.getValue(Customer.class);
-                        State = cust.getState();
-                        City = cust.getCity();
-                        Sub = cust.getSuburban();
-                        customermenu();
-                    }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
-            }
-        });
-        return v;
-    }
-
-    @Override
-    public void onRefresh() {
-
-        customermenu();
-    }
-
-    private void customermenu() {
-
-        swipeRefreshLayout.setRefreshing(true);
-        databaseReference = FirebaseDatabase.getInstance().getReference("FoodSupplyDetails").child(State).child(City).child(Sub);
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        //
+        dataaa.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                updateDishModelList.clear();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    for (DataSnapshot snapshot1 : snapshot.getChildren()) {
-                        UpdateDishModel updateDishModel = snapshot1.getValue(UpdateDishModel.class);
-                        updateDishModelList.add(updateDishModel);
-                    }
-                }
-                adapter = new CustomerHomeAdapter(getContext(), updateDishModelList);
-                recyclerView.setAdapter(adapter);
-                swipeRefreshLayout.setRefreshing(false);
-
+                Chef chefc = dataSnapshot.getValue(Chef.class);
+                State = chefc.getState();
+                City = chefc.getCity();
+                Sub = chefc.getSuburban();
+                chefDishes();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
+
+
+        return v;
+    }
+
+
+
+    //this
+    private void chefDishes() {
+
+        String useridd = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("FoodDetails").child(State).child(City).child(Sub).child(useridd);
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                updateDishModelList.clear();
+                //fulling the list with elemnets
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    UpdateDishModel updateDishModel = snapshot.getValue(UpdateDishModel.class);
+                    updateDishModelList.add(updateDishModel);
+
+                }
+                //initialize the adapter
+                adapter = new ChefHomeAdapter(getContext(), updateDishModelList);
+                //so finally the recyclerview contain all posted dishes of the currentChef
+                recyclerView.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
 
     }
 
-
-    //set option menu with logout option
+    //create menu
     @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.logout,menu);
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.logout, menu);
     }
 
 
-    //when selecting the item logout from the menu option
+    //if you select the logout options
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int idd=item.getItemId();
-        if(idd==R.id.LogOut){
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int idd = item.getItemId();
+        if (idd == R.id.LogOut) {
             Logout();
-            return  true;
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
+    //function logout
 
-    //logout fuction with clearing the session and returning to the main activity
-    private void Logout(){
+    private void Logout() {
+
         FirebaseAuth.getInstance().signOut();
-        Intent intent=new Intent(getActivity(), MainMenu.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        Intent intent = new Intent(getActivity(), MainMenu.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK );
         startActivity(intent);
+
     }
+
 }

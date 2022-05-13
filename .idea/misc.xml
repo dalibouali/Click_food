@@ -22,12 +22,14 @@
         <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/layout/activity_main_menu.xml" value="0.264" />
         <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/layout/activity_order_dish.xml" value="0.20572916666666666" />
         <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/layout/activity_registration.xml" value="0.264" />
+        <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/layout/activity_update_delete_dish.xml" value="0.2760416666666667" />
         <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/layout/chef_home.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/layout/chef_menu_update_delete.xml" value="0.2760416666666667" />
         <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/layout/chef_orders.xml" value="0.35104166666666664" />
         <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/layout/chef_pendingorders.xml" value="0.35104166666666664" />
         <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/layout/chef_profile.xml" value="0.35104166666666664" />
         <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/layout/customer_home.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/layout/customer_menudish.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/layout/customer_menudish.xml" value="0.264" />
         <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/layout/fragment_customer_cart.xml" value="0.4" />
         <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/layout/fragment_customer_order.xml" value="0.1" />
         <entry key="..\:/Users/boual/AndroidStudioProjects/Click_Food/app/src/main/res/layout/fragment_customer_track.xml" value="0.2" />

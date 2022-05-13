@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 
 import my.clickfood.app.R;
 
+//this fragment is supposed to contain all non confirmed fragment
 public class PendingOrderFragment extends Fragment {
     @Nullable
     @Override

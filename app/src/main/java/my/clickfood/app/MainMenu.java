@@ -10,7 +10,9 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 
+//second activity to be shown
 public class MainMenu extends AppCompatActivity {
+    //daclaring variables
     Button signin,signup;
     ImageView bgimage;
 
@@ -18,14 +20,14 @@ public class MainMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+        //initialise animation in background zoom in and out (zoomin/zoomout: are two xml file defined in anim folder)
         final Animation zoomin= AnimationUtils.loadAnimation(this,R.anim.zoomin);
         final Animation zoomout= AnimationUtils.loadAnimation(this,R.anim.zoomout);
-
         bgimage=findViewById(R.id.backmenu);
         bgimage.setAnimation(zoomin);
         bgimage.setAnimation(zoomout);
 
-        //Some animations to background
+        //here we implement ony on animationEnd to call the other animation
         zoomout.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
@@ -58,17 +60,19 @@ public class MainMenu extends AppCompatActivity {
 
             }
         });
-
         // End Animation
 
-        signin = (Button) findViewById(R.id.SignwithEmail);
 
+        //declaring the two button
+        signin = (Button) findViewById(R.id.SignwithEmail);
         signup = (Button) findViewById(R.id.Signup);
-//if Sign in with Email clicked
+
+
+        //if Sign in button is clicked
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //here we sens an extra string with the intent to save the type of button clicked in the next activity ( SignIn)
                 Intent signemail = new Intent(MainMenu.this, ChooseOne.class);
                 signemail.putExtra("Home", "SignIn");
                 startActivity(signemail);
@@ -78,10 +82,10 @@ public class MainMenu extends AppCompatActivity {
 
 
         //if Signup Clicked
-
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //here we sens an extra string with the intent to save the type of button clicked in the next activity ( SignUp)
                 Intent signup = new Intent(MainMenu.this, ChooseOne.class);
                 signup.putExtra("Home", "SignUp");
                 startActivity(signup);

@@ -1,5 +1,6 @@
 package my.clickfood.app.Chef;
 
+//DTO class
 public class Chef {
     private String Suburban,City,Confirmpassword,Emailid,fname,House,Lname,Mobile,Password,Postcode,State;
 

@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 
 import my.clickfood.app.R;
 
+//this fragment is supposed to contains all confirmed orgers
 public class OrderFragment extends Fragment {
     @Nullable
     @Override

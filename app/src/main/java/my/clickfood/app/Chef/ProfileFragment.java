@@ -15,7 +15,7 @@ import androidx.fragment.app.Fragment;
 
 import my.clickfood.app.R;
 import my.clickfood.app.chef_postDish;
-
+//this fragment contain button psot dish will redirect to post dish activity
 public class ProfileFragment extends Fragment {
     Button postdish;
     ConstraintLayout backimg;
@@ -25,6 +25,7 @@ public class ProfileFragment extends Fragment {
 
         View v=inflater.inflate(R.layout.chef_profile,null);
         getActivity().setTitle("Post Dish");
+        //here we add some animation to background every picture appear for 3s
         AnimationDrawable animationDrawable = new AnimationDrawable();
         animationDrawable.addFrame(getResources().getDrawable(R.drawable.img_1), 3000);
         animationDrawable.addFrame(getResources().getDrawable(R.drawable.img_2), 3000);
@@ -38,16 +39,17 @@ public class ProfileFragment extends Fragment {
         animationDrawable.addFrame(getResources().getDrawable(R.drawable.img_10), 3000);
         animationDrawable.addFrame(getResources().getDrawable(R.drawable.img_11), 3000);
         animationDrawable.addFrame(getResources().getDrawable(R.drawable.img_12), 3000);
-
-
-
         animationDrawable.setOneShot(false);
         animationDrawable.setEnterFadeDuration(850);
         animationDrawable.setExitFadeDuration(1600);
-
         backimg=v.findViewById(R.id.back1);
         backimg.setBackgroundDrawable(animationDrawable);
         animationDrawable.start();
+
+        //end of animation
+
+
+        //button that bring us to post dish activity
         postdish=(Button)v.findViewById(R.id.post_dish);
         postdish.setOnClickListener(new View.OnClickListener(){
 

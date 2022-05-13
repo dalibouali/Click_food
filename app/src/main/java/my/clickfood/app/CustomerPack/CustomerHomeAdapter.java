@@ -35,19 +35,21 @@ public class CustomerHomeAdapter extends RecyclerView.Adapter<CustomerHomeAdapte
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        //convert xml file into an object of type view
         View view= LayoutInflater.from(mcontext).inflate(R.layout.customer_menudish,parent,false);
         return new CustomerHomeAdapter.ViewHolder(view);
     }
 
+    //method called by recyclerview to display the data at the specific position
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
 
         final UpdateDishModel updateDishModel=updateDishModellist.get(position);
+        //Glide est une bibliothèque de chargement d'images
         Glide.with(mcontext).load(updateDishModel.getImageURL()).into(holder.imageView);
         holder.Dishname.setText(updateDishModel.getDishes());
-        updateDishModel.getRandomUID();
-        updateDishModel.getChefId();
         holder.price.setText("Price: ₹ " + updateDishModel.getPrice());
+        //if item clicked go and update the dish
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,11 +64,15 @@ public class CustomerHomeAdapter extends RecyclerView.Adapter<CustomerHomeAdapte
         });
     }
 
+
+    //return number of items in the collection
     @Override
     public int getItemCount() {
         return updateDishModellist.size();
     }
 
+
+//Permet de représenter un élément de la liste de données dans le RecyclerView
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView imageView;

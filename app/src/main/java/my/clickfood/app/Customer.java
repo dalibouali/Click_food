@@ -1,5 +1,6 @@
 package my.clickfood.app;
 
+//this is a dto class of customer
 public class Customer {
 
 

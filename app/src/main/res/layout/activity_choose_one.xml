@@ -12,8 +12,8 @@
 
     <LinearLayout
         android:id="@+id/linearlayout"
-        android:layout_width="274dp"
-        android:layout_height="376dp"
+        android:layout_width="266dp"
+        android:layout_height="296dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
@@ -59,17 +59,6 @@
             android:background="@drawable/input_shape"
             android:text="Connect as Customer"
             android:textColor="#FBFAFA" />
-
-        <Button
-            android:id="@+id/delivery"
-            android:layout_width="201dp"
-            android:layout_height="63dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="30dp"
-            android:background="@drawable/input_shape"
-            android:text="Connect as Delivery person"
-            android:textColor="#FAF6F5" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

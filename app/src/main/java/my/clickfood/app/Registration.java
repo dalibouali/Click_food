@@ -30,12 +30,16 @@ import java.util.HashMap;
 
 public class Registration extends AppCompatActivity {
 
+    //ici la liste des municipalité qui se trouve dans Tunis et Ariana
+
     String[] Tunis = {"Tunis1", "Sidi hessine", "El Marsa","El Kram","Le Bardo","La Goulette","Cartage"};
     String[] Ariana = {"Ettadhamen","La Sokra","Ariana","Raoued", "Kalet El Andalous", "Sidi Thabet","El Mnihla"};
 
-
+    //ici la liste des deligations qui se trouve dans tunis1
     String[] Tunis1 = {"El medina ", "El hafsia", "Souk el nhas", "Beb mnara", "el sabbaghine"};
 
+
+    //pour le reste on n'a pas le temps pour les implementer tous
     String[] Sidi_hessine = {"El Omrane ", "El Tahrir", "Cité El Khadhra", "Beb Souika ", "Beb Saadoun"};
     String[] El_Marsa = {"El Omrane ", "El Tahrir", "Cité El Khadhra", "Beb Souika ", "Beb Saadoun"};
     String[] El_Kram = {"El Omrane ", "El Tahrir", "Cité El Khadhra", "Beb Souika ", "Beb Saadoun"};
@@ -43,6 +47,9 @@ public class Registration extends AppCompatActivity {
     String[] La_Goulette = {"El Omrane ", "El Tahrir", "Cité El Khadhra", "Beb Souika ", "Beb Saadoun"};
     String[] Carthage = {"El Omrane ", "El Tahrir", "Cité El Khadhra", "Beb Souika ", "Beb Saadoun"};
 
+
+
+    //NB:******   pour que les spinner fonctionnet dynamiquement il faut choisir dans state tunis et city tunis1 et suburban n'importe element de la liste ********
 
 
     TextInputLayout fname, lname, localadd, emaill, pass, cmpass, Mobileno;
@@ -58,7 +65,7 @@ public class Registration extends AppCompatActivity {
     String password;
     String firstname;
     String lastname;
-    String Localaddress;
+
     String confirmpass;
     String mobileno;
     Intent i;
@@ -70,11 +77,12 @@ public class Registration extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
         try {
+            //initialize a progress Dialog that appear when we wait until request is done
             mDialog = new ProgressDialog(Registration.this);
             mDialog.setMessage("Registering please wait...");
             mDialog.setCancelable(false);
             mDialog.setCanceledOnTouchOutside(false);
-
+            //initialising variables
             fname = (TextInputLayout) findViewById(R.id.Firstname);
             lname = (TextInputLayout) findViewById(R.id.Lastname);
             localadd = (TextInputLayout) findViewById(R.id.Localaddress);
@@ -135,6 +143,7 @@ public class Registration extends AppCompatActivity {
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     Object value = parent.getItemAtPosition(position);
                     cityy = value.toString().trim();
+                    //only this one works perfectly because other region are not implemented
                     if (cityy.equals("Tunis1")) {
                         ArrayList<String> listt = new ArrayList<>();
                         for (String text : Tunis1) {
@@ -168,7 +177,7 @@ public class Registration extends AppCompatActivity {
 
                 }
             });
-            //choose one itm of suburban spin
+            //choose one item of suburban spin
             Suburban.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -182,7 +191,9 @@ public class Registration extends AppCompatActivity {
                 }
             });
 
+
             databaseReference = FirebaseDatabase.getInstance().getReference(role);
+            //initialize a progress Dialog that appear when we wait until request is done
             FAuth = FirebaseAuth.getInstance();
 
             Signin.setOnClickListener(new View.OnClickListener() {
@@ -192,12 +203,15 @@ public class Registration extends AppCompatActivity {
                     password = pass.getEditText().getText().toString().trim();
                     firstname = fname.getEditText().getText().toString().trim();
                     lastname = lname.getEditText().getText().toString().trim();
-                    Localaddress = localadd.getEditText().getText().toString().trim();
+
                     confirmpass = cmpass.getEditText().getText().toString().trim();
                     mobileno = Mobileno.getEditText().getText().toString().trim();
 
+                    //call function that check validation of input
                     if (isValid()) {
 
+
+                        //show the loading dialog
                         mDialog.show();
 
                         FAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -205,9 +219,11 @@ public class Registration extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     String useridd = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                                    //in the table user save each user with his role
                                     databaseReference = FirebaseDatabase.getInstance().getReference("User").child(useridd);
                                     final HashMap<String, String> hashMap = new HashMap<>();
                                     hashMap.put("Role", role);
+                                    //now we will add information about user in the right table named as the Role of user
                                     databaseReference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
@@ -219,21 +235,26 @@ public class Registration extends AppCompatActivity {
                                             hashMappp.put("LastName", lastname);
                                             hashMappp.put("Mobileno", mobileno);
                                             hashMappp.put("Password", password);
-                                            hashMappp.put("LocalAddress", Localaddress);
+
                                             hashMappp.put("State", statee);
                                             hashMappp.put("Suburban", suburban);
+                                            //here the name of the table same as the role
                                             FirebaseDatabase.getInstance().getReference(role)
                                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                                     .setValue(hashMappp).addOnCompleteListener(new OnCompleteListener<Void>() {
 
                                                 @Override
                                                 public void onComplete(@NonNull Task<Void> task) {
+                                                    //sending email verification to user
                                                     FAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
 
                                                         @Override
                                                         public void onComplete(@NonNull Task<Void> task) {
                                                             if (task.isSuccessful()) {
+                                                                //cmose loading dialog
                                                                 mDialog.dismiss();
+
+                                                                //Alrt Of Success
                                                                 AlertDialog.Builder builder = new AlertDialog.Builder(Registration.this);
                                                                 builder.setMessage("Registered Successfully,Please Verify your Email");
                                                                 builder.setCancelable(false);
@@ -293,12 +314,13 @@ public class Registration extends AppCompatActivity {
             Toast.makeText(this, "ERROR"+e.getMessage(), Toast.LENGTH_LONG).show();
         }
 
-
+        //go to login page if have already an account
         Email.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Intent i = new Intent(Registration.this, Login.class);
+                i.putExtra("Role",role);
                 startActivity(i);
                 finish();
             }
@@ -308,8 +330,12 @@ public class Registration extends AppCompatActivity {
 
 
     }
+
+    //email pattern to verify
     String emailpattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
+
+    //validation function
     public boolean isValid() {
         emaill.setErrorEnabled(false);
         emaill.setError("");
@@ -324,7 +350,7 @@ public class Registration extends AppCompatActivity {
         Mobileno.setErrorEnabled(false);
         Mobileno.setError("");
 
-        boolean isValidfirstname = false, isValidlastname = false, isValidaddress = false, isValidemail = false, isvalidpassword = false, isvalidconfirmpassword = false, isvalid = false, isvalidmobileno = false;
+        boolean isValidfirstname = false, isValidlastname = false,  isValidemail = false, isvalidpassword = false, isvalidconfirmpassword = false, isvalid = false, isvalidmobileno = false;
         if (TextUtils.isEmpty(firstname)) {
             fname.setErrorEnabled(true);
             fname.setError("FirstName is required");
@@ -384,13 +410,8 @@ public class Registration extends AppCompatActivity {
                 isvalidconfirmpassword = true;
             }
         }
-        if (TextUtils.isEmpty(Localaddress)) {
-            localadd.setErrorEnabled(true);
-            localadd.setError("Local Address is required");
-        } else {
-            isValidaddress = true;
-        }
-        isvalid = (isValidfirstname && isValidlastname && isValidemail && isvalidconfirmpassword && isvalidpassword && isvalidmobileno && isValidaddress) ? true : false;
+
+        isvalid = (isValidfirstname && isValidlastname && isValidemail && isvalidconfirmpassword && isvalidpassword && isvalidmobileno ) ? true : false;
         return isvalid;
     }
 }
