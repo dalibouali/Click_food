@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Chef.Update_Delete_Dish">
 
+<<<<<<< HEAD
     <ImageButton
         android:id="@+id/imageupload"
         android:layout_width="120dp"
@@ -143,4 +144,6 @@
     </LinearLayout>
 
 
+=======
+>>>>>>> f26ab0e889d5512cac818bbba5b98ecc18c04df3
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
@@ -39,3 +40,10 @@
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
+=======
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+>>>>>>> f26ab0e889d5512cac818bbba5b98ecc18c04df3

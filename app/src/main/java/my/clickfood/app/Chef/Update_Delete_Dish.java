@@ -1,5 +1,6 @@
 package my.clickfood.app.Chef;
 
+
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -67,10 +68,16 @@ public class Update_Delete_Dish extends AppCompatActivity {
     DatabaseReference dataaa;
     String State, City, Sub;
 
+
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_delete_dish);
+
 
         desc = (TextInputLayout) findViewById(R.id.description);
         qty = (TextInputLayout) findViewById(R.id.quantity);
@@ -336,6 +343,7 @@ public class Update_Delete_Dish extends AppCompatActivity {
                 .setGuidelines(CropImageView.Guidelines.ON)
                 .setMultiTouchEnabled(true)
                 .start(this);
+
 
 
     }

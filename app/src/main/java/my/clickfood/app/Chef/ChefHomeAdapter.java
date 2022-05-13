@@ -1,3 +1,4 @@
+
 package my.clickfood.app.Chef;
 
 import android.content.Context;
@@ -12,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import my.clickfood.app.Chef.UpdateDishModel;
+import my.clickfood.app.Chef.Update_Delete_Dish;
 import my.clickfood.app.R;
 
 
@@ -28,21 +31,21 @@ public class ChefHomeAdapter extends RecyclerView.Adapter<ChefHomeAdapter.ViewHo
 
     @NonNull
     @Override
-    public ChefHomeAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         //convert xml file into an object of type view (chef_menu_update_delete contains the layout of each item on the recycler view list)
         View view= LayoutInflater.from(mcont).inflate(R.layout.chef_menu_update_delete,parent,false);
-        return new ChefHomeAdapter.ViewHolder(view);
+        return new ViewHolder(view);
     }
     //method called by recyclerview to display the data at the specific position
     @Override
-    public void onBindViewHolder(@NonNull ChefHomeAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final UpdateDishModel updateDishModel=updateDishModellist.get(position);
         holder.dishes.setText(updateDishModel.getDishes());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             //onclicked item of recyclerView go and update the dish
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(mcont,Update_Delete_Dish.class);
+                Intent intent=new Intent(mcont, Update_Delete_Dish.class);
                 intent.putExtra("updatedeletedish",updateDishModel.getRandomUID());
                 mcont.startActivity(intent);
 
@@ -66,4 +69,5 @@ public class ChefHomeAdapter extends RecyclerView.Adapter<ChefHomeAdapter.ViewHo
 
         }
     }
+
 }
