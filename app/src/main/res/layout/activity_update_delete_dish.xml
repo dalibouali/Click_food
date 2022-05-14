@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Chef.Update_Delete_Dish">
 
-<<<<<<< HEAD
+
     <ImageButton
         android:id="@+id/imageupload"
         android:layout_width="120dp"

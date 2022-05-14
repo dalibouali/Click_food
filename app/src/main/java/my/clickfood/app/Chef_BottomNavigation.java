@@ -14,6 +14,7 @@ import my.clickfood.app.Chef.OrderFragment;
 import my.clickfood.app.Chef.PendingOrderFragment;
 import my.clickfood.app.Chef.ProfileFragment;
 
+//after login as a Chef this will be displayed
 public class Chef_BottomNavigation extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     @Override

@@ -44,7 +44,7 @@ import java.util.UUID;
 
 import my.clickfood.app.Chef_BottomNavigation;
 import my.clickfood.app.R;
-
+//this activity is the resposnible of updating diqshes
 public class Update_Delete_Dish extends AppCompatActivity {
 
 
@@ -201,6 +201,9 @@ public class Update_Delete_Dish extends AppCompatActivity {
 
     }
 
+
+    //validation function of the form
+
     private boolean isValid() {
         desc.setErrorEnabled(false);
         desc.setError("");
@@ -237,6 +240,8 @@ public class Update_Delete_Dish extends AppCompatActivity {
     }
 
 
+
+    //upload image here  using Crop Image we use here a prepared code
     private void uploadImage() {
 
         if (imageuri != null) {

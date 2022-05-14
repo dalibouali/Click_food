@@ -44,6 +44,7 @@ import my.clickfood.app.Chef.FoodDetails;
 
 public class chef_postDish extends AppCompatActivity {
 
+    //declaring variables
     ImageButton imageButton;
     Button post_dish;
     Spinner Dishes;
@@ -71,7 +72,9 @@ public class chef_postDish extends AppCompatActivity {
         qty=(TextInputLayout) findViewById(R.id.quantity);
         pri=(TextInputLayout) findViewById(R.id.price);
         post_dish=(Button) findViewById(R.id.post);
+        //Returns an instance of this class corresponding to the default FirebaseApp
         Fauth=FirebaseAuth.getInstance();
+        //get a reference to FoodDetails table
         databaseReference=firebaseDatabase.getInstance().getReference("FoodDetails");
         try{
             String userid=FirebaseAuth.getInstance().getCurrentUser().getUid();
