@@ -11,6 +11,8 @@ import androidx.fragment.app.Fragment;
 
 import my.clickfood.app.R;
 
+//not yet implemented
+
 public class CustomerTrackFragment extends Fragment {
 
     @Nullable

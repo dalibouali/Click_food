@@ -1,5 +1,5 @@
 package my.clickfood.app.CustomerPack;
-
+//DTO CLASS
 public class Cart {
 
     private String ChefId,DishID,DishName,DishQuantity,Price,Totalprice;

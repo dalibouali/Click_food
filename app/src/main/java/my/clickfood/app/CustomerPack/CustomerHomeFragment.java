@@ -34,6 +34,7 @@ import my.clickfood.app.Customer;
 import my.clickfood.app.MainMenu;
 import my.clickfood.app.R;
 
+//this fragment will be displayed when customer first loged in
 public class CustomerHomeFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener{
 
     RecyclerView recyclerView;
@@ -57,6 +58,7 @@ public class CustomerHomeFragment extends Fragment implements SwipeRefreshLayout
         recyclerView.startAnimation(animation);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         updateDishModelList = new ArrayList<>();
+        //allow the refresh action by swiping down the screen
         swipeRefreshLayout = (SwipeRefreshLayout) v.findViewById(R.id.swipelayout);
         swipeRefreshLayout.setOnRefreshListener(this);
         swipeRefreshLayout.setColorSchemeResources(R.color.colorPrimaryDark, R.color.green);
